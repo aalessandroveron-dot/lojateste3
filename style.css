@@ -1,0 +1,341 @@
+/* ==========================================================================
+   1. VARIÁVEIS E RESET GLOBAL 
+   ========================================================================== */
+:root {
+    --cor-principal: #007bff;     /* Azul Claro Vibrante 💙 */
+    --cor-texto-escura: #2b2d42;   /* Cinza Chumbo da Página Inicial 🩶 */
+    --cor-fundo-site: #f4f5f7;     /* Fundo Cinza Claro */
+    --cor-clara: #ffffff;          /* Branco Puro 🤍 */
+    --cor-whatsapp: #25D366;       
+    --cor-fundo-menu: #1e2229;     /* Azul Escuro Fechado 🌌 */
+    --cor-linha-principal: var(--cor-principal); 
+    --cor-linha-interna: rgba(255, 255, 255, 0.15); 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: var(--cor-fundo-site);
+    color: var(--cor-texto-escura);
+    width: 100%;
+}
+
+/* ==========================================================================
+   2. TOPO ORIGINAL 
+   ========================================================================== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: var(--cor-clara);
+    border-bottom: 2px solid var(--cor-principal);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.menu-btn {
+    font-size: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--cor-texto-escura);
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: 0.2s;
+}
+
+.menu-btn:hover {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: var(--cor-principal);
+}
+
+.logo-img {
+    max-height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+.spacer { width: 42px; }
+
+/* ==========================================================================
+   3. CARROSSEL COM TRANSIÇÃO SUAVE (FADE)
+   ========================================================================== */
+.carrossel-container {
+    position: relative;
+    width: 100%;
+    margin: 15px auto;
+    overflow: hidden;
+    padding: 0 15px;
+}
+
+.carrossel-slides {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: grid;
+}
+
+.slide {
+    grid-area: 1 / 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+    width: 100%;
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.seta-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(43, 45, 66, 0.4);
+    color: var(--cor-clara);
+    border: none;
+    font-size: 16px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.seta-btn.left { left: 25px; }
+.seta-btn.right { right: 25px; }
+
+.seta-btn:hover { background-color: var(--cor-principal); }
+
+/* ==========================================================================
+   4. BARRA DE BUSCA
+   ========================================================================== */
+.search-container {
+    padding: 10px 15px;
+    margin: 0 auto;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    color: var(--cor-texto-escura);
+    transition: 0.3s;
+}
+
+.search-container input:focus { border-color: var(--cor-principal); }
+
+/* ==========================================================================
+   5. MENU LATERAL AZUL ESCURO PERSONALIZADO (Com linhas brancas)
+   ========================================================================== */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100%;
+    background: var(--cor-fundo-menu); 
+    color: var(--cor-clara);
+    box-shadow: 4px 0 15px rgba(0,0,0,0.3);
+    z-index: 200;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+}
+
+.sidebar.active { left: 0; }
+
+.sidebar-header {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 2px solid var(--cor-linha-principal); 
+}
+
+.close-btn {
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--cor-clara);
+}
+
+.menu-lista { list-style: none; }
+.menu-lista li { border-bottom: 1px solid var(--cor-linha-interna); }
+
+.menu-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: var(--cor-clara);
+    padding: 18px 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.submenu {
+    list-style: none;
+    background-color: rgba(0, 0, 0, 0.15); 
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.submenu-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    color: #e2e8f0; 
+    padding: 15px 35px;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.sub-sub-menu { background-color: rgba(0, 0, 0, 0.25); }
+
+.sub-item-link {
+    display: block;
+    text-decoration: none;
+    color: #cbd5e1;
+    padding: 12px 55px;
+    font-size: 14px;
+}
+
+.seta-icone {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4); 
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.has-submenu.aberto > .toggle-btn > .seta-icone {
+    transform: rotate(90deg); 
+    color: var(--cor-linha-principal); 
+}
+
+/* NOVO: ESTILO DA TELA ESCURA DO FUNDO (Overlay) */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4); /* Escurece o site sutilmente */
+    z-index: 150; /* Fica abaixo do menu (200) mas acima do site (100) */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+/* Ativado dinamicamente pelo JS junto com a Sidebar */
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ==========================================================================
+   6. VITRINE DE PRODUTOS
+   ========================================================================== */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.products-grid a { text-decoration: none; display: block; }
+
+.product-card {
+    background: var(--cor-clara);
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    transition: opacity 0.3s ease;
+}
+
+.product-title {
+    font-size: 14px;
+    margin: 8px 0;
+    color: var(--cor-texto-escura);
+    min-height: 40px;
+}
+
+.product-price { font-size: 16px; font-weight: bold; color: var(--cor-principal); }
+.product-parcel { font-size: 12px; color: #777; margin-bottom: 12px; }
+
+.whatsapp-btn {
+    display: block;
+    background: var(--cor-whatsapp);
+    color: var(--cor-clara);
+    text-decoration: none;
+    padding: 10px 8px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 13px;
+    transition: 0.2s;
+}
+
+.product-card:hover { box-shadow: 0 8px 15px rgba(0,0,0,0.1); transform: translateY(-3px); }
+.product-card:hover img { opacity: 0.75; }
+.whatsapp-btn:hover { background: #1ebd59; }
+
+/* Botão Flutuante do WhatsApp */
+.whatsapp-flutuante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    z-index: 1000;
+    transition: 0.2s;
+}
+
+.whatsapp-flutuante img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.2)); }
+.whatsapp-flutuante:hover { transform: scale(1.1); }
+
+/* ==========================================================================
+   7. REGRAS DE MÍDIA 
+   ========================================================================== */
+@media (min-width: 768px) {
+    .header, .carrossel-container, .search-container, .products-grid {
+        width: 100%; max-width: 100%; padding-left: 40px; padding-right: 40px; 
+    }
+    .products-grid { grid-template-columns: repeat(4, 1fr); gap: 25px; }
+}

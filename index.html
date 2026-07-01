@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AleShoes - Ambiente de Testes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Topo da Loja -->
+    <header class="header">
+        <button id="menu-btn" class="menu-btn">☰</button>
+        <img src="imagem/logo3.webp" alt="Logo AleShoes" class="logo-img">
+        <div class="spacer"></div>
+    </header>
+
+    <!-- Carrossel de Banners com transição suave e setas discretas -->
+    <section class="carrossel-container">
+        <button id="prev-btn" class="seta-btn left">❮</button>
+        <div class="carrossel-slides">
+            <div class="slide active">
+                <img src="imagem/new_balance_1080v13.jpg" alt="Banner 1" class="banner-img">
+            </div>
+            <div class="slide">
+                <img src="imagem/tenis2.jpg" alt="Banner 2" class="banner-img">
+            </div>
+        </div>
+        <button id="next-btn" class="seta-btn right">❯</button>
+    </section>
+
+    <!-- Barra de Busca -->
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Pesquise por marca ou modelo...">
+    </div>
+
+    <!-- MENU LATERAL AVANÇADO -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <button id="close-btn" class="close-btn">&times;</button>
+        </div>
+        
+        <ul class="menu-lista">
+            <li><a href="index.html" class="menu-link">Início</a></li>
+            
+            <!-- NÍVEL 1: Produtos -->
+            <li class="has-submenu">
+                <a href="#" class="menu-link toggle-btn">Produtos <span class="seta-icone">❯</span></a>
+                
+                <!-- NÍVEL 2: Submenu (Tênis e Roupas) -->
+                <ul class="submenu">
+                    <li><a href="#" class="filter-btn submenu-link" data-filter="todos">Ver todos os produtos</a></li>
+                    
+                    <!-- Subcategoria: Tênis -->
+                    <li class="has-submenu">
+                        <a href="#" class="submenu-link toggle-btn">Tênis <span class="seta-icone">❯</span></a>
+                        <!-- NÍVEL 3: Marcas -->
+                        <ul class="submenu sub-sub-menu">
+                            <li><a href="#" class="filter-btn sub-item-link" data-filter="nike">Nike</a></li>
+                            <li><a href="#" class="filter-btn sub-item-link" data-filter="adidas">Adidas</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Subcategoria: Roupas -->
+                    <li class="has-submenu">
+                        <a href="#" class="submenu-link toggle-btn">Roupas <span class="seta-icone">❯</span></a>
+                        <!-- NÍVEL 3: Mensagem -->
+                        <ul class="submenu sub-sub-menu">
+                            <li style="padding: 12px 55px; font-size: 13px; color: #747d8c; font-style: italic; cursor: default; border-bottom: none;">
+                                Sem itens cadastrados
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- NOVO: Máscara Invisível/Escura de fundo para fechar ao clicar fora -->
+    <div id="menu-overlay" class="menu-overlay"></div>
+
+    <!-- Título da Seção -->
+    <h2 style="padding: 20px 15px 5px 15px; max-width: 100%; font-size: 24px; font-weight: bold; color: var(--cor-texto-escura); margin-left: 25px;">Todos</h2>
+
+    <!-- Grade de Produtos -->
+    <main class="products-grid" id="products-grid">
+        <a href="detalhes-airforce.html" target="_blank" data-marca="nike" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/airforce1.jpeg" alt="Air Force Branco">
+                <h4 class="product-title">Tênis Nike Air Force 1 Branco</h4>
+                <p class="product-price">R$ 109,90</p>
+                <p class="product-parcel">12x de R$ 12,44</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="detalhes-superstar.html" target="_blank" data-marca="adidas" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/sup3 (1).jpeg" alt="Superstar Preto">
+                <h4 class="product-title">Tênis Adidas Superstar Preto</h4>
+                <p class="product-price">R$ 109,90</p>
+                <p class="product-parcel">12x de R$ 12,44</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="detalhes-jordan4.html" target="_blank" data-marca="nike" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/jordan4 (1).jpeg" alt="Jordan 4 Pine Green">
+                <h4 class="product-title">Tênis Nike Air Jordan 4 Pine Green</h4>
+                <p class="product-price">R$ 109,90</p>
+                <p class="product-parcel">12x de R$ 12,44</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+
+        <a href="detalhes-dunk.html" target="_blank" data-marca="nike" style="text-decoration: none;">
+            <div class="product-card">
+                <img src="imagem/dunk1 (1).jpeg" alt="Dunk SB Cinza">
+                <h4 class="product-title">Tênis Nike Dunk SB Cinza</h4>
+                <p class="product-price">R$ 109,90</p>
+                <p class="product-parcel">12x de R$ 12,44</p>
+                <span class="whatsapp-btn">Ver Detalhes</span>
+            </div>
+        </a>
+    </main>
+
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me" target="_blank" class="whatsapp-flutuante">
+        <img src="imagem/zap1.png" alt="WhatsApp Geral">
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
